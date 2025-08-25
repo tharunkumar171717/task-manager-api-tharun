@@ -17,12 +17,11 @@ async function loginUser(email, password) {
 
   const token = jwt.sign(
     { id: user.id, username: user.username },
-    process.env.JWT_SECRET,
+    index.JWT_SECRET,
     { expiresIn: "1h" }
   );
 
   return { user, token };
 }
-
 
 module.exports = { registerUser, loginUser  };

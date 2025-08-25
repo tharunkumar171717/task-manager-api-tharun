@@ -1,0 +1,7 @@
+DB_HOST=localhost
+DB_USER=db_user
+DB_PASSWORD=password
+DB_NAME=sample_db
+DB_DIALECT=mysql
+PORT=port_number
+JWT_SECRET=9a7c2f545e43486b940b7d36a0098e2c68104e4d285e357b39e2c4635602e771
