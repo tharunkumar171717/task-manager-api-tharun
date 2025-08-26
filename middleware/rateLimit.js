@@ -1,6 +1,6 @@
 const requests = {};
 // 10 minutes
-const windowMs = 10 * 60 * 1000;
+const maxTime = 10 * 60 * 1000;
 const maxRequests = 120; // max requests per IP
 
 function rateLimiter(req, res, next) {
@@ -9,7 +9,7 @@ function rateLimiter(req, res, next) {
   const requestData = requests[ip];
 
   // for initial or time completed
-  if (!requestData || currentTime - requestData.startTime > windowMs) {
+  if (!requestData || currentTime - requestData.startTime > maxTime) {
     requests[ip] = {count: 1, startTime: currentTime};
     return next();
   }
@@ -22,7 +22,7 @@ function rateLimiter(req, res, next) {
   // too many requests
   return res.status(429).json({
     success: false,
-    error: 'Too many requests, please try again after 10 minutes.',
+    error: 'Too many requests, please try later.',
   });
 }
 

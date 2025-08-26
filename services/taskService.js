@@ -10,7 +10,7 @@ async function getTasks(userId, filters = {}, sortBy, order) {
   if (filters.status) where.status = filters.status;
 
   return await Task.findAll({
-    where: {where},
+    where: where,
     order: sortBy ? [[sortBy, order === 'desc' ? 'DESC' : 'ASC']] : undefined,
     paranoid: false,
   });
