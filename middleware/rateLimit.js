@@ -9,8 +9,8 @@ function rateLimiter(req, res, next) {
   const currentTime = Date.now();
   const requestData = requests[ip];
 
-  // for initial or time completed
-  if (!requestData || currentTime - requestData.startTime > maxTime) {
+  // if time completed then reset
+  if (currentTime - requestData.startTime > maxTime) {
     requests[ip] = {count: 1, startTime: currentTime};
     return next();
   }

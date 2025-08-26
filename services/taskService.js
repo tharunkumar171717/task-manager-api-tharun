@@ -12,7 +12,6 @@ async function getTasks(userId, filters = {}, sortBy, order) {
   return await Task.findAll({
     where: where,
     order: sortBy ? [[sortBy, order === 'desc' ? 'DESC' : 'ASC']] : undefined,
-    paranoid: false,
   });
 }
 //  getting tasks of particular id
