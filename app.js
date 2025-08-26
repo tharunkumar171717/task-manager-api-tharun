@@ -1,20 +1,18 @@
 const express = require('express');
 const sequelize = require('./config/db');
 const morgan = require('morgan');
-// Load routes & middleware
 const authRoutes = require('./routes/authRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const errorMiddleware = require('./middleware/errorMiddleware');
-const index=require('../config/index');
-
+const index=require('./config/index');
+const rateLimit=require('./middleware/rateLimit');
 // Initialize Express
 const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
 // Routes
-app.use('/auth', authRoutes);
-
-app.use('/tasks', taskRoutes);
+app.use('/auth', rateLimit, authRoutes);
+app.use('/tasks', rateLimit, taskRoutes);
 // Global error handler
 app.use(errorMiddleware);
 // Start server with DB sync
