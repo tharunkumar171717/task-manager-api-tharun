@@ -1,7 +1,8 @@
 const requests = {};
 // 10 minutes
 const maxTime = 10 * 60 * 1000;
-const maxRequests = 120; // max requests per IP
+// max requests per IP
+const maxRequests = 120;
 
 function rateLimiter(req, res, next) {
   const ip = req.ip;

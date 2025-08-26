@@ -1,5 +1,5 @@
 const taskService = require('../services/taskService');
-
+// creating task using services
 exports.createTask = async (req, res) => {
   try {
     const task = await taskService.createTask(req.body, req.user.id);
@@ -8,7 +8,7 @@ exports.createTask = async (req, res) => {
     res.status(400).json({message: error.message});
   }
 };
-
+// getting the tasks
 exports.getTasks = async (req, res) => {
   try {
     const {priority, status, sortBy, order} = req.query;
@@ -18,7 +18,7 @@ exports.getTasks = async (req, res) => {
     res.status(500).json({message: error.message});
   }
 };
-
+// getting the task based on id
 exports.getTaskById = async (req, res) => {
   try {
     const task = await taskService.getTaskById(req.params.id, req.user.id);
@@ -28,7 +28,7 @@ exports.getTaskById = async (req, res) => {
     res.status(500).json({message: error.message});
   }
 };
-
+// updating the task
 exports.updateTask = async (req, res) => {
   try {
     const task = await taskService.updateTask(req.params.id, req.user.id, req.body);
@@ -38,7 +38,7 @@ exports.updateTask = async (req, res) => {
     res.status(400).json({message: error.message});
   }
 };
-
+// deleting the task
 exports.deleteTask = async (req, res) => {
   try {
     const task = await taskService.deleteTask(req.params.id, req.user.id);

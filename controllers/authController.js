@@ -1,4 +1,5 @@
 const {registerUser, loginUser} = require('../services/userService');
+// register functionality using services
 exports.register = async (req, res) => {
   try {
     const {username, email, password} = req.body;
@@ -8,7 +9,7 @@ exports.register = async (req, res) => {
     res.status(400).json({message: error.message});
   }
 };
-
+// login functionality using services
 exports.login = async (req, res) => {
   try {
     const {email, password} = req.body;

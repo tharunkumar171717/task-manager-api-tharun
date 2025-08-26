@@ -7,6 +7,7 @@ const authMiddleware = (req, res, next) => {
   if (!token) return res.status(401).json({message: 'Access denied, token missing'});
 
   try {
+    // verifying the token
     const decoded = jwt.verify(token, index.JWT_SECRET);
     req.user = decoded;
     next();

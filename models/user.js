@@ -1,5 +1,6 @@
 const {DataTypes} = require('sequelize');
 const sequelize = require('../config/db');
+// defining the schema
 const User = sequelize.define(
     'User',
     {
