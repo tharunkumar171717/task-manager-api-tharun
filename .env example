@@ -1,7 +1,21 @@
-DB_HOST=localhost
-DB_USER=db_user
-DB_PASSWORD=password
-DB_NAME=sample_db
-DB_DIALECT=mysql
-PORT=port_number
-JWT_SECRET=9a7c2f545e43486b940b7d36a0098e2c68104e4d285e357b39e2c4635602e771
+# Server
+PORT=4000
+
+# Supabase (Postgres)
+# Dashboard -> Project Settings -> Database -> Connection string -> URI
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:5432/postgres
+DB_DIALECT=postgres
+
+# TLS. Supabase needs it; set DB_SSL=false only for a local Postgres.
+DB_SSL=true
+DB_SSL_REJECT_UNAUTHORIZED=false
+
+# Alternative to DATABASE_URL: discrete fields
+DB_HOST=
+DB_PORT=5432
+DB_USER=
+DB_PASSWORD=
+DB_NAME=postgres
+
+# Generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+JWT_SECRET=replace_me
